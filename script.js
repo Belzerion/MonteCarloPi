@@ -1,5 +1,14 @@
 
+window.addEventListener('load', adjustCanvasSize);
+window.addEventListener('resize', adjustCanvasSize);
 
+function adjustCanvasSize() {
+    const canvas = document.getElementById("canvas");
+    const style = getComputedStyle(canvas);
+    canvas.width = parseInt(style.width);  // fixe la résolution de largeur
+    canvas.height = parseInt(style.width); // fixe la résolution de hauteur
+    drawAxesAndCircle();
+}
 function clearCanvas()
 {
     const canvas = document.getElementById("canvas");
@@ -16,23 +25,23 @@ function drawAxesAndCircle()
     const ctx = canvas.getContext("2d");
     
     ctx.beginPath();
-    ctx.moveTo(0,300);
-    ctx.lineTo(600,300);
+    ctx.moveTo(0,canvas.width/2);
+    ctx.lineTo(canvas.width,canvas.width/2);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(300,0);
-    ctx.lineTo(300,600);
+    ctx.moveTo(canvas.width/2,0);
+    ctx.lineTo(canvas.width/2,canvas.width);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(300, 300, 300, 0, 2 * Math.PI);
+    ctx.arc(canvas.width/2, canvas.width/2, canvas.width/2, 0, 2 * Math.PI);
     ctx.stroke();
 }
 
 function checkIn(point)
 {
-    if (Math.sqrt(Math.pow(point.x-300, 2) + Math.pow(point.y-300, 2)) <= 300 )
+    if (Math.sqrt(Math.pow(point.x-canvas.width/2, 2) + Math.pow(point.y-canvas.width/2, 2)) <= 300 )
     {
         return true;
     }
