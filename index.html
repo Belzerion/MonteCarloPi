@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <link href="style.css" rel="stylesheet" />
+
+</head>
+<html>
+    <body>
+        <div class="controls">
+            <input type="number" placeholder="Nombre de points" id="points"/>
+            <input readonly placeholder="Pi Estimation" id="pi"/>
+            <button onclick="simulation()">Simuler</button>
+            <button onclick="stop()" id="stop">Stop</button>
+            <button onclick="clearCanvas()">Nettoyer</button>
+        </div>
+        <canvas id="canvas" class="myCanvas" width="600" height="600"></canvas>
+        <script src="script.js"></script>
+
+    </body>
+</html>
