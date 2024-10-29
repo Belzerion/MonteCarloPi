@@ -41,7 +41,8 @@ function drawAxesAndCircle()
 
 function checkIn(point)
 {
-    if (Math.sqrt(Math.pow(point.x-canvas.width/2, 2) + Math.pow(point.y-canvas.width/2, 2)) <= 300 )
+    const canvas = document.getElementById("canvas");
+    if (Math.sqrt(Math.pow(point.x-canvas.width/2, 2) + Math.pow(point.y-canvas.width/2, 2)) <= canvas.width/2 )
     {
         return true;
     }
@@ -79,13 +80,15 @@ function simulation()
         ctx.fillStyle = "red"; // couleur du point
         ctx.fill();
     }
+    
 
     // Intervalle pour afficher chaque point progressivement
     const displayInterval = setInterval(() => {
         if (currentIndex < points.length) {
             drawPoint(points[currentIndex]);
             checkIn(points[currentIndex]) ? pointsIn++ : pointsOut++;
-            piEst.value=4*pointsIn/(pointsIn + pointsOut);
+            pi = (4*pointsIn/(pointsIn + pointsOut)).toFixed(5);
+            piEst.value = pi;
             currentIndex++;
         } else {
             clearInterval(displayInterval); // Stop l'intervalle quand tous les points sont affichés
