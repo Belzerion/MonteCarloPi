@@ -57,8 +57,8 @@ function simulation()
 
     const ctx = canvas.getContext("2d");
 
-    pointsIn = 0;
-    pointsOut = 0;
+    pointsIn = 0.0;
+    pointsOut = 0.0;
 
     // Liste des points à afficher (exemple de points aléatoires)
     const points = Array.from({ length: pointsNumber }, () => ({
